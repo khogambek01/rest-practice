@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color-coded Numbers</title>
+    <style>
+        .even { color: blue; }
+        .odd { color: red; }
+        .prime { color: green; }
+    </style>
+</head>
+<body>
+
+<script>
+    function isPrime(num) {
+        for (let i = 2; i < num; i++)
+            if (num % i === 0) return false;
+        return num !== 1;
+    }
+
+    function generateAndDisplayNumbers(n) {
+        let output = '<p>';
+
+        for (let num = 1; num <= n; num++) {
+            if (num % 2 === 0) {
+                output += `<span class="even">${num}</span>`;
+            } else if (isPrime(num)) {
+                output += `<span class="prime">${num}</span>`;
+            } else {
+                output += `<span class="odd">${num}</span>`;
+            }
+
+            if (num < n) {
+                output += ', ';
+            }
+        }
+
+        output += '</p>';
+        document.body.innerHTML = output;
+    }
+
+    generateAndDisplayNumbers(20);
+</script>
+
+</body>
+</html>
